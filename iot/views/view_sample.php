@@ -2,6 +2,9 @@
 <html>
 <head>
 	<title></title>
+  <!--style sendiri-->
+  <link rel="stylesheet" type="text/css" href="../assets/pulse.css">
+  <!--style template-->
 	  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>DATA_SISWA</title>
@@ -72,7 +75,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">REKAP ABSENSI</a>
+            <a class="navbar-brand" href="javascript:void(0)">SCANNING</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -106,62 +109,54 @@
     
 
     <!--awalan isian-->
-
-    <div class="content">
+        
+            <div class="content">
         <div class="row">
           <div class="col-md-12">
             <div class="card ">
               <div class="card-header">
-                <h4 class="card-title"> REKAP ABSENSI</h4>
+                <h4 class="card-title">TAMBAH DATA SISWA</h4>
               </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table tablesorter " id="">
-                    <thead class=" text-primary">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <?php 
+                      
+                      
+                      include '../controllers/controller_rekapabsen.php';
+
+                      //membuat objek dari class siswa
+                      $absen = new controller_rekapabsen();
+                      $GetAbsen = $absen->GetData_Where($_GET['nisn']);
+                    ?>
+
+                    <?php foreach ($GetSiswa as $Get) { ?>
+                    <form action="../config/routes.php?function=create_rekapabsen" method="POST">
+                      <table border="1">
+                        <input type="hidden" name="id_absen">
+                      <input type="hidden" name="nisn" value="<?php echo $Get['nisn']; ?>">
+
                       <tr>
-                        <th>
-                          NISN
-                        </th>
-                        <th>
-                          NAMA SISWA
-                        </th>
-                        <th>
-                          KELAS
-                        </th>
-                        <th>
-                          JURUSAN
-                        </th>
-                        <th>
-                          WAKTU MASUK
-                        </th>
-                        <th class="text-center">
-                          STATUS
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
+                        <td>KELAS</td>
                         <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td class="text-center">
-                          $36,738
+          
+                          <select name="id_kelas">
+                          <?php 
+                          $GetKelas = $siswa->GetData_Kelas();
+                          foreach ($GetKelas as $GetK) : ?>
+                          <option value="<?php echo $GetK['id_kelas'] ?>"><?php echo $GetK['nama_kelas']; ?></option>
+                          <?php endforeach; ?>
+                          </select>
+
+
                         </td>
                       </tr>
-                    </tbody>
-                  </table>
+
+                      <tr>
+                      <td colspan="2" align="right"><input type="submit" name="proses" value="create"></td>
+                      </tr>
+                    </table>
+                  </form>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -169,8 +164,8 @@
         </div>
       </div>
 
-
 	</div>
+
     <!--akhiran isian-->
 
     <!--untuk background setting-->

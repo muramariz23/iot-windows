@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <title></title>
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>DATA_SISWA</title>
   <!--     Fonts and icons     -->
@@ -14,13 +14,14 @@
   <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+
 </head>
 <body>
 
   <div class="wrapper">
     <div class="sidebar">
 
-	<div class="sidebar-wrapper">
+  <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
             IOT
@@ -61,8 +62,8 @@
 
 
     <div class="main-panel">
-    	
-    	      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+      
+            <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle d-inline">
@@ -72,7 +73,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">REKAP ABSENSI</a>
+            <a class="navbar-brand" href="javascript:void(0)">TAMBAH DATA SISWA</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -112,56 +113,70 @@
           <div class="col-md-12">
             <div class="card ">
               <div class="card-header">
-                <h4 class="card-title"> REKAP ABSENSI</h4>
+                <h4 class="card-title">TAMBAH DATA SISWA</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
+
+                  <form action="../config/routes.php?function=create_siswa" method="POST">
                   <table class="table tablesorter " id="">
-                    <thead class=" text-primary">
+                    <tbody class=" text-primary">
                       <tr>
-                        <th>
-                          NISN
-                        </th>
-                        <th>
-                          NAMA SISWA
-                        </th>
-                        <th>
-                          KELAS
-                        </th>
-                        <th>
-                          JURUSAN
-                        </th>
-                        <th>
-                          WAKTU MASUK
-                        </th>
-                        <th class="text-center">
-                          STATUS
-                        </th>
+                        <td>NISN</td>
+                        <td><input type="text" name="nisn"></td>
                       </tr>
-                    </thead>
-                    <tbody>
                       <tr>
+                        <td>nama</td>
+                        <td><input type="text" name="nama"></td>
+                      </tr>
+
+                      <tr>
+                        <td>KELAS</td>
                         <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td class="text-center">
-                          $36,738
+                      <select name="id_kelas">
+                      <!-- logic combo get database-->
+                      <option value= "1">X RPL 1</option>
+                      <option value= "2">X RPL 2</option>
+                      <option value= "3">XI RPL 1</option>
+                      <option value= "4">XI RPL 2</option>
+                      <option value= "5">XII RPL 1</option>
+                      <option value= "6">XII RPL 2</option>
+                      <option value= "7">X TFLM 1</option>
+                      <option value= "8">X TFLM 2</option>
+                      <option value= "9">XI TFLM 1</option>
+                      <option value= "10">XI TFLM 2</option>
+                      <option value= "11">XII TFLM 1</option>
+                      <option value= "12">XII TFLM 2</option>
+                      <option value= "13">XIII TFLM 1</option>
+                      <option value= "14">XIII TFLM 2</option>
+                      <option value= "15">X TKJ 1</option>
+                      <option value= "16">X TKJ 2</option>
+                      <option value= "17">X TKJ 3</option>
+                      <option value= "18">XI TKJ 1</option>
+                      <option value= "19">XI TKJ 2</option>
+                      <option value= "20">XI TKJ 3</option>
+                      <option value= "21">XII TKJ 1</option>
+                      <option value= "22">XII TKJ 2</option>
+                      <option value= "23">XII TKJ 3</option>
+                      <option value= "15">X TKRO 1</option>
+                      <option value= "16">X TKRO 2</option>
+                      <option value= "17">X TKRO 3</option>
+                      <option value= "18">XI TKRO 1</option>
+                      <option value= "19">XI TKRO 2</option>
+                      <option value= "20">XI TKRO 3</option>
+                      <option value= "21">XII TKRO 1</option>
+                      <option value= "22">XII TKRO 2</option>
+                      <option value= "23">XII TKRO 3</option>
+                      </select>
                         </td>
                       </tr>
+
+    <tr>
+        <td colspan="2" align="right"><input type="submit" name="proses" value="create_siswa"></td>
+      </tr>
                     </tbody>
                   </table>
+                </form>
                 </div>
               </div>
             </div>
@@ -170,7 +185,7 @@
       </div>
 
 
-	</div>
+  </div>
     <!--akhiran isian-->
 
     <!--untuk background setting-->

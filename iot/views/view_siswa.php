@@ -17,6 +17,20 @@
 </head>
 <body>
 
+  <!--php start-->
+  <?php 
+
+include '../controllers/controller_siswa.php';
+// membuat objek dari class siswa
+$siswa = new controller_siswa();
+$GetSiswa = $siswa->GetData_All();
+
+//mengecek di objek $siswa ada berapa banyak property
+//echo var_dump($siswa);
+
+ ?>
+ <!--end php-->
+
   <div class="wrapper">
     <div class="sidebar">
 
@@ -46,6 +60,12 @@
             <a href="view_scan.php">
               <i class="tim-icons icon-bell-55"></i>
               <p>SCANNING</p>
+            </a>
+          </li>
+          <li>
+            <a href="view_post_siswa.php">
+              <i class="tim-icons icon-simple-add "></i>
+              <p>TAMBAH DATA SISWA</p>
             </a>
           </li>
 
@@ -113,6 +133,9 @@
                     <thead class=" text-primary">
                       <tr>
                         <th>
+                          NO
+                        </th>
+                        <th>
                           NISN
                         </th>
                         <th>
@@ -121,26 +144,50 @@
                         <th>
                           KELAS
                         </th>
-                        <th class="text-center">
+                        <th>
                           JURUSAN
+                        </th>
+                        <th class="text-center">
+                          TINDAKAN
                         </th>
                       </tr>
                     </thead>
                     <tbody>
+                      <!--php foreach head start-->
+                      <?php 
+
+        //decision validasi variabel
+        if (isset($GetSiswa)) {
+          $no = 1;
+          foreach ($GetSiswa as $Get) {
+            ?>
+            <!--php foreach head end-->
                       <tr>
                         <td>
-                          Dakota Rice
+                          <?php echo $no++; ?>
                         </td>
                         <td>
-                          Niger
+                          <?php echo $Get['nisn']; ?>
                         </td>
                         <td>
-                          Oud-Turnhout
+                          <?php echo $Get['nama']; ?>
+                        </td>
+                        <td>
+                          <?php echo $Get['nama_kelas']; ?>
+                        </td> 
+                        <td>
+                          <?php echo $Get['jurusan']; ?>
                         </td>
                         <td class="text-center">
-                          $36,738
+                        <a href="../views/view_put_siswa.php?nisn=<?php echo $Get['nisn'] ?>"><i class="tim-icons icon-pencil"></i> </a>
+                        <a>   |   </a>
+                        <a href="../config/routes.php?function=delete_siswa&nisn=<?php echo $Get['nisn'] ?>"><i class="tim-icons icon-trash-simple"></i> </a>
                         </td>
                       </tr>
+                      <?php 
+                    }
+                  }
+                ?>
                     </tbody>
                   </table>
                 </div>

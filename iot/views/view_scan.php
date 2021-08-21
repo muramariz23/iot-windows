@@ -3,7 +3,7 @@
 <head>
 	<title></title>
   <!--style sendiri-->
-  <link rel="stylesheet" type="text/css" href="../assets/style.css">
+  <link rel="stylesheet" type="text/css" href="../assets/pulse.css">
   <!--style template-->
 	  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
@@ -19,6 +19,20 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 <body>
+
+  <!--php start-->
+  <?php 
+
+include '../controllers/controller_siswa.php';
+// membuat objek dari class siswa
+$siswa = new controller_siswa();
+$GetSiswa = $siswa->GetData_All();
+
+//mengecek di objek $siswa ada berapa banyak property
+//echo var_dump($siswa);
+
+ ?>
+ <!--end php-->
 
   <div class="wrapper">
     <div class="sidebar">
@@ -51,6 +65,12 @@
               <p>SCANNING</p>
             </a>
           </li>
+           <li>
+            <a href="view_post_siswa.php">
+              <i class="tim-icons icon-simple-add "></i>
+              <p>TAMBAH DATA SISWA</p>
+            </a>
+          </li>
 
         </ul>
       </div>
@@ -69,7 +89,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">Table List</a>
+            <a class="navbar-brand" href="javascript:void(0)">SCANNING</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -103,10 +123,90 @@
     
 
     <!--awalan isian-->
+    <div class="pulse">
+      
+    </div>
+      
+    
+          <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card ">
+              <div class="card-header">
+                <h4 class="card-title"> DATA SISWA</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table tablesorter " id="">
+                    <thead class=" text-primary">
+                      <tr>
+                        <th>
+                          NO
+                        </th>
+                        <th>
+                          NISN
+                        </th>
+                        <th>
+                          NAMA SISWA
+                        </th>
+                        <th>
+                          KELAS
+                        </th>
+                        <th>
+                          JURUSAN
+                        </th>
+                        <th class="text-center">
+                          TINDAKAN
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!--php foreach head start-->
+                      <?php 
 
-    <div class="pulse"></div>
+        //decision validasi variabel
+        if (isset($GetSiswa)) {
+          $no = 1;
+          foreach ($GetSiswa as $Get) {
+            ?>
+            <!--php foreach head end-->
+                      <tr>
+                        <td>
+                          <?php echo $no++; ?>
+                        </td>
+                        <td>
+                          <?php echo $Get['nisn']; ?>
+                        </td>
+                        <td>
+                          <?php echo $Get['nama']; ?>
+                        </td>
+                        <td>
+                          <?php echo $Get['nama_kelas']; ?>
+                        </td> 
+                        <td>
+                          <?php echo $Get['jurusan']; ?>
+                        </td>
+                        <td class="text-center">
+                        <a href="../views/view_sample.php?nisn=<?php echo $Get['nisn'] ?>"><i class="tim-icons icon-pencil"></i> </a>
+                        <a>   |   </a>
+                        <a href="../config/routes.php?function=delete_siswa&nisn=<?php echo $Get['nisn'] ?>"><i class="tim-icons icon-trash-simple"></i> </a>
+                        </td>
+                      </tr>
+                      <?php 
+                    }
+                  }
+                ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 	</div>
+
     <!--akhiran isian-->
 
     <!--untuk background setting-->
