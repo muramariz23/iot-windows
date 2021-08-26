@@ -17,6 +17,19 @@
 </head>
 <body>
 
+
+  <?php 
+
+include '../controllers/controller_rekapabsen.php';
+// membuat objek dari class siswa
+$absen = new controller_rekapabsen();
+$GetAbsen = $absen->GetData_All();
+
+//mengecek di objek $siswa ada berapa banyak property
+//echo var_dump($siswa);
+
+ ?>
+
   <div class="wrapper">
     <div class="sidebar">
 
@@ -120,46 +133,74 @@
                     <thead class=" text-primary">
                       <tr>
                         <th>
-                          NISN
+                          no
                         </th>
                         <th>
-                          NAMA SISWA
+                          Nama
                         </th>
                         <th>
-                          KELAS
+                          Kelas
                         </th>
                         <th>
-                          JURUSAN
+                          Tanggal
                         </th>
                         <th>
-                          WAKTU MASUK
+                          Jam Masuk
+                        </th>
+                        <th>
+                          Jam Keluar
                         </th>
                         <th class="text-center">
-                          STATUS
+                          Tindakan
                         </th>
                       </tr>
                     </thead>
                     <tbody>
+                      <?php 
+
+                      //membaca tanggal
+                     
+                       ?>
+                       <?php 
+
+        //decision validasi variabel
+        if (isset($GetAbsen)) {
+           date_default_timezone_set('Asia/Jakarta');
+                      $tanggal = date('Y-m-d');
+
+          $no = 1;
+          foreach ($GetAbsen as $Get) {
+            ?>
+            <!--php foreach head end-->
                       <tr>
                         <td>
-                          Dakota Rice
+                          <?php echo $no++; ?>
                         </td>
                         <td>
-                          Niger
+                          <?php echo $Get['id_absen']; ?>
                         </td>
                         <td>
-                          Oud-Turnhout
+                          <?php echo $Get['nokartu']; ?>
                         </td>
                         <td>
-                          Oud-Turnhout
+                          <?php echo $Get['tanggal']; ?>
+                        </td> 
+                        <td>
+                          <?php echo $Get['jam_masuk']; ?>
                         </td>
                         <td>
-                          Oud-Turnhout
+                          <?php echo $Get['jam_pulang']; ?>
                         </td>
                         <td class="text-center">
-                          $36,738
+                        <a href="../views/view_put_siswa.php?nisn=<?php echo $Get['nisn'] ?>"><i class="tim-icons icon-pencil"></i> </a>
+                        <a>   |   </a>
+                        <a href="../config/routes.php?function=delete_rekapabsen&id_absen=<?php echo $Get['id_absen'] ?>"><i class="tim-icons icon-trash-simple"></i> </a>
                         </td>
                       </tr>
+                      <?php 
+                    }
+                  }
+                ?>
                     </tbody>
                   </table>
                 </div>

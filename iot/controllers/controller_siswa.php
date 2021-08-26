@@ -15,6 +15,7 @@ class controller_siswa{
 	var $nisn;
 	var $nama;
 	var $id_kelas;
+	var $nokartu;
 	
 
 	//method main variabel
@@ -28,10 +29,10 @@ class controller_siswa{
 
 
 		//method memasukan data ke dalam tabel
-		function POSTData ($nisn,$nama,$id_kelas)
+		function POSTData ($nisn,$nama,$id_kelas,$nokartu)
 		{
 			//perintah POST data
-			$this->Msiswa->POST($nisn,$nama,$id_kelas);
+			$this->Msiswa->POST($nisn,$nama,$id_kelas,$nokartu);
 		}
 
 
@@ -61,10 +62,10 @@ class controller_siswa{
 
 
 		//method memasukan data ke dalam tabel
-		function PUTData($nisn,$nama,$id_kelas)
+		function PUTData($nisn,$nama,$id_kelas,$nokartu)
 		{
 			//perintah PUT data
-			$this->Msiswa->PUT($nisn,$nama,$id_kelas);
+			$this->Msiswa->PUT($nisn,$nama,$id_kelas,$nokartu);
 		}
 
 
@@ -76,7 +77,11 @@ class controller_siswa{
 			$this->Msiswa->DELETE($nisn);
 		}
 
+
+		
+
 		
 }
+
 
  ?>

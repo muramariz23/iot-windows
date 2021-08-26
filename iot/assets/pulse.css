@@ -48,14 +48,5 @@
 }
 
 
-@media(max-width: 800px){
-    .awokwow{
-        display: none;
-    }
-}
 
-@media(min-width: 800px){
-    .awikwok{
-        display: none;
-    }
-}
+

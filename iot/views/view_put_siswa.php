@@ -133,6 +133,7 @@
                     <form action="../config/routes.php?function=put_siswa" method="POST">
                       <table border="1">
                       <input type="hidden" name="nisn" value="<?php echo $Get['nisn']; ?>">
+                      <input type="hidden" name="nokartu" value="<?php echo $Get['nokartu']; ?>">
 
                       <tr>
                       <td>NAMA</td>

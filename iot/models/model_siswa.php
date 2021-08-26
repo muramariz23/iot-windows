@@ -13,7 +13,7 @@ class Model_siswa{
 	var $nisn;
 	var $nama;
 	var $id_kelas;
-
+	var $nokartu;
 
 
 	//method main variabel
@@ -28,13 +28,14 @@ class Model_siswa{
 
 
 		//method memasukan data ke dalam table
-		function POST ($nisn,$nama,$id_kelas)
+		function POST ($nisn,$nama,$id_kelas,$nokartu)
 		{
 			
 			mysqli_query($this->con,"insert into siswa values(
 				'".$nisn."',
 				'".$nama."',
-				'".$id_kelas."'
+				'".$id_kelas."',
+				'".$nokartu."'
 				)");
 		}
 
@@ -80,12 +81,13 @@ class Model_siswa{
 
 
 		//method memasukan data kedalam tabel
-		function PUT ($nisn,$nama,$id_kelas)
+		function PUT ($nisn,$nama,$id_kelas,$nokartu)
 		{
 			//perintah PUT data
 			mysqli_query($this->con,"update siswa set
 				nama='".$nama."',
-				id_kelas='".$id_kelas."'
+				id_kelas='".$id_kelas."',
+				nokartu='".$nokartu."'
 				where nisn='".$nisn."'
 				");
 		}
@@ -98,6 +100,7 @@ class Model_siswa{
 			//perintah DELETE data
 			mysqli_query($this->con,"delete from siswa where nisn='$nisn'");
 		}
+
 
 }
 

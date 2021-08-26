@@ -11,10 +11,11 @@ class Model_rekapabsen{
 	var $result;
 
 	var $id_absen;
-	var $nisn;
-	var $id_kelas;
-	var $waktu_masuk;
-	var $status
+	var $nokartu;
+	var $tanggal;
+	var $jam_masuk;
+	var $jam_pulang;
+	var $status;
 
 
 
@@ -33,12 +34,12 @@ class Model_rekapabsen{
 		function POST ($id_absen,$nisn,$id_kelas,$waktu_masuk,$status)
 		{
 			
-			mysqli_query($this->con,"insert into rekapabsen values(
+			mysqli_query($this->con,"insert into absensi values(
 				'".$id_absen."'
-				'".$nisn."',
-				'".$id_kelas."',
-				'".$waktu_masuk."',
-				'".$status."'
+				'".$nokartu."',
+				'".$tanggal."',
+				'".$jam_masuk."',
+				'".$jam_pulang."'
 				)");
 		}
 
@@ -48,7 +49,7 @@ class Model_rekapabsen{
 		function GET()
 		{
 			//perintah Get data
-			$this->query=mysqli_query($this->con,"select siswa.*, kelas.nama_kelas, kelas.jurusan from siswa join kelas on siswa.id_kelas = kelas.id_kelas");
+			$this->query=mysqli_query($this->con,"select absensi.*, siswa.nama from absensi join siswa on absensi.nokartu = siswa.nokartu");
 			while ($this->data=mysqli_fetch_array($this->query)) {
 				$this->result[]=$this->data;
 			}
@@ -57,26 +58,7 @@ class Model_rekapabsen{
 
 
 
-		function GETKelas()
-		{
-			//perintah Get data
-			$this->query=mysqli_query($this->con,"select * from kelas");
-			while ($this->data=mysqli_fetch_array($this->query)) {
-				$this->result[]=$this->data;
-			}
-			return $this->result;
-		}
 
-
-		function GETSiswa()
-		{
-			//perintah Get data
-			$this->query=mysqli_query($this->con,"select * from siswa");
-			while ($this->data=mysqli_fetch_array($this->query)) {
-				$this->result[]=$this->data;
-			}
-			return $this->result;
-		}
 
 
 
@@ -84,7 +66,7 @@ class Model_rekapabsen{
 		function GET_Where($id_absen)
 		{
 			//perintah get where data
-			$this->query=mysqli_query($this->con,"select siswa.*, kelas.nama_kelas, kelas.jurusan from siswa join kelas on siswa.id_kelas = kelas.id_kelas where nisn='$nisn'");
+			$this->query=mysqli_query($this->con,"select absensi.*, siswa.nama from absensi join siswa on absensi.nokartu = siswa.nokartu where absensi.tanggal = $tanggal");
 			while($this->data=mysqli_fetch_array($this->query))
 			{
 				$this->result[]=$this->data;
@@ -95,14 +77,15 @@ class Model_rekapabsen{
 
 
 		//method memasukan data kedalam tabel
-		function PUT ($id_absen,$nisn,$id_kelas,$waktu_masuk,$status)
+		function PUT ($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_pulang)
 		{
 			//perintah PUT data
 			mysqli_query($this->con,"update absen set
-				nisn='".$nisn."',
-				id_kelas='".$id_kelas."',
-				waktu_masuk='".$waktu_masuk."',
-				status='".$status."'
+				id_absen='".$id_absen."',
+				nokartu='".$nokartu."',
+				tanggal='".$tanggal."',
+				jam_masuk='".$jam_masuk."',
+				jam_pulang='".$jam_pulang."'
 				where id_absen='".$id_absen."'
 				");
 		}
@@ -113,7 +96,7 @@ class Model_rekapabsen{
 		function DELETE ($id_absen)
 		{
 			//perintah DELETE data
-			mysqli_query($this->con,"delete from absen where id_absen='$id_absen'");
+			mysqli_query($this->con,"delete from absensi where id_absen='$id_absen'");
 		}
 
 }

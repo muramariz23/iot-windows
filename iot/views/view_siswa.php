@@ -163,6 +163,7 @@ $GetSiswa = $siswa->GetData_All();
             ?>
             <!--php foreach head end-->
                       <tr>
+                        <input type="hidden" name="" value="<?php echo $Get['nokartu']; ?>">
                         <td>
                           <?php echo $no++; ?>
                         </td>

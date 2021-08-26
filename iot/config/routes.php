@@ -2,7 +2,6 @@
 
 include '../config/csrf.php';
 include '../controllers/controller_siswa.php';
-include '../controllers/controller_kelas.php';
 include '../controllers/controller_rekapabsen.php';
 //membuat objek dari class
 
@@ -21,7 +20,8 @@ if ($function == "create_siswa") {
 		$db_siswa->POSTData(
 			$_POST['nisn'],
 			$_POST['nama'],
-			$_POST['id_kelas']
+			$_POST['id_kelas'],
+			$_POST['nokartu']
 		);
 	// }
 
@@ -37,7 +37,8 @@ if ($function == "create_siswa") {
 			$db_siswa->PUTData(
 			$_POST['nisn'],
 			$_POST['nama'],
-			$_POST['id_kelas']
+			$_POST['id_kelas'],
+			$_POST['nokartu']
 		);
 
 		// }

@@ -15,6 +15,8 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 
+
+
 </head>
 <body>
 
@@ -121,6 +123,7 @@
                   <form action="../config/routes.php?function=create_siswa" method="POST">
                   <table class="table tablesorter " id="">
                     <tbody class=" text-primary">
+                      <tr id="norfid"></tr>
                       <tr>
                         <td>NISN</td>
                         <td><input type="text" name="nisn"></td>
@@ -351,6 +354,13 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
       });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      setInterval(function() {
+        $("#norfid").load('nokartu.php')
+      }, 0);
+          });
   </script>
 </body>
 </html>

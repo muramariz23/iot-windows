@@ -4,6 +4,7 @@
 	<title></title>
   <!--style sendiri-->
   <link rel="stylesheet" type="text/css" href="../assets/pulse.css">
+  <link rel="stylesheet" type="text/css" href="../assets/coba.css">
   <!--style template-->
 	  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
@@ -124,87 +125,13 @@ $GetSiswa = $siswa->GetData_All();
 
     <!--awalan isian-->
     <div class="pulse">
-      
+
     </div>
-      
+     
+      <h3 class="coba" id="cekkartu"></h3>
     
-          <div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header">
-                <h4 class="card-title"> DATA SISWA</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table tablesorter " id="">
-                    <thead class=" text-primary">
-                      <tr>
-                        <th>
-                          NO
-                        </th>
-                        <th>
-                          NISN
-                        </th>
-                        <th>
-                          NAMA SISWA
-                        </th>
-                        <th>
-                          KELAS
-                        </th>
-                        <th>
-                          JURUSAN
-                        </th>
-                        <th class="text-center">
-                          TINDAKAN
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!--php foreach head start-->
-                      <?php 
-
-        //decision validasi variabel
-        if (isset($GetSiswa)) {
-          $no = 1;
-          foreach ($GetSiswa as $Get) {
-            ?>
-            <!--php foreach head end-->
-                      <tr>
-                        <td>
-                          <?php echo $no++; ?>
-                        </td>
-                        <td>
-                          <?php echo $Get['nisn']; ?>
-                        </td>
-                        <td>
-                          <?php echo $Get['nama']; ?>
-                        </td>
-                        <td>
-                          <?php echo $Get['nama_kelas']; ?>
-                        </td> 
-                        <td>
-                          <?php echo $Get['jurusan']; ?>
-                        </td>
-                        <td class="text-center">
-                        <a href="../views/view_sample.php?nisn=<?php echo $Get['nisn'] ?>"><i class="tim-icons icon-pencil"></i> </a>
-                        <a>   |   </a>
-                        <a href="../config/routes.php?function=delete_siswa&nisn=<?php echo $Get['nisn'] ?>"><i class="tim-icons icon-trash-simple"></i> </a>
-                        </td>
-                      </tr>
-                      <?php 
-                    }
-                  }
-                ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      
+  
 	</div>
 
     <!--akhiran isian-->
@@ -372,6 +299,16 @@ $GetSiswa = $siswa->GetData_All();
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
       });
+  </script>
+  <script type="text/javascript">
+    
+      $(document).ready(function() {
+      setInterval(function() {
+        $("#cekkartu").load('bacakartu.php')
+      }, 1000);
+          });
+    
+    
   </script>
 </body>
 </html>

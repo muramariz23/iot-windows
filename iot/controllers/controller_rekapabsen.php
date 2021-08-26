@@ -13,10 +13,10 @@ class controller_rekapabsen{
 	var $Mabsen;
 
 	var $id_absen;
-	var $nisn;
-	var $id_kelas;
-	var $waktu_masuk;
-	var $status;
+	var $nokartu;
+	var $tanggal;
+	var $jam_masuk;
+	var $jam_pulang;
 	
 
 	//method main variabel
@@ -30,10 +30,10 @@ class controller_rekapabsen{
 
 
 		//method memasukan data ke dalam tabel
-		function POSTData ($id_absen,$nisn,$id_kelas,$waktu_masuk,$status)
+		function POSTData ($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_keluar)
 		{
 			//perintah POST data
-			$this->Mabsen->POST($id_absen,$nisn,$id_kelas,$waktu_masuk,$status);
+			$this->Mabsen->POST($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_keluar);
 		}
 
 
@@ -44,19 +44,7 @@ class controller_rekapabsen{
 			//perintah GET data
 			return $this->Mabsen->GET();
 		}
-
-
-		function GetData_Kelas()
-		{
-			return $this->Mabsen->GETKelas();
-		}
-
-		function GetData_Siswa()
-		{
-			return $this->Mabsen->GETSiswa();
-		}
-
-		
+				
 
 		//method untuk mengambil data seleksi dari tabel
 		function GetData_Where($id_absen)
@@ -68,10 +56,10 @@ class controller_rekapabsen{
 
 
 		//method memasukan data ke dalam tabel
-		function PUTData($id_absen,$nisn,$id_kelas,$waktu_masuk,$status)
+		function PUTData($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_keluar)
 		{
 			//perintah PUT data
-			$this->Mabsen->PUT($id_absen,$nisn,$id_kelas,$waktu_masuk,$status);
+			$this->Mabsen->PUT($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_keluar);
 		}
 
 
