@@ -17,6 +17,7 @@ if ($function == "create_siswa") {
 
 	//validasi token csrf
 	// if (validation() == true) {
+
 		$db_siswa->POSTData(
 			$_POST['nisn'],
 			$_POST['nama'],
@@ -24,6 +25,9 @@ if ($function == "create_siswa") {
 			$_POST['nokartu']
 		);
 	// }
+		
+		}
+
 
 	header("location:../views/view_siswa.php");
 	}
@@ -65,6 +69,8 @@ if ($function == "create_siswa") {
 			$_POST['nama_kelas'],
 			$_POST['jurusan']
 		);
+
+
 	// }
 
 	header("location:../views/view_kelas.php");

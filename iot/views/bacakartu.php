@@ -19,12 +19,16 @@
 
  		 $querykartu=mysqli_query($con,"select * from tmprfid");
  		 $Getkartu=mysqli_fetch_array($querykartu);
+ 		 if (!empty($Getkartu)) {
  		 $nokartu=$Getkartu['nokartu'];
+ 		 }
+
  		 
-		?>
+
+ 		 		?>
 
 <div class="coba">
-	<?php if ($nokartu=="") { ?>
+	<?php if (empty($nokartu)) { ?>
 	
 
 	<h3 style="text-align: left;">ABSEN : <?php echo $mode_absen; ?></h3>
@@ -37,7 +41,7 @@
 	$jumlah_data = mysqli_num_rows($cari_siswa);
 
 	if ($jumlah_data==0) {
-		echo "<h1>maaf kartu belum ditempelkan</h1>";
+		echo "<h1>Kartu Tidak terdaftar</h1>";
 	}else{
 		$Getkartusiswa = mysqli_fetch_array($cari_siswa);
 		$nama_siswa = $Getkartusiswa['nama'];

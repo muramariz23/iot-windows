@@ -110,6 +110,8 @@
 
     <!--awalan isian-->
 
+   
+
     <div class="content">
         <div class="row">
           <div class="col-md-12">
@@ -119,6 +121,8 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
+
+                 
 
                   <form action="../config/routes.php?function=create_siswa" method="POST">
                   <table class="table tablesorter " id="">
@@ -175,11 +179,13 @@
                       </tr>
 
     <tr>
-        <td colspan="2" align="right"><input type="submit" name="proses" value="create_siswa"></td>
+        <td colspan="2" align="right"><input type="submit" name="proses" value="create_siswa" ></td>
+
       </tr>
                     </tbody>
                   </table>
                 </form>
+                
                 </div>
               </div>
             </div>

@@ -78,9 +78,14 @@ class controller_siswa{
 		}
 
 
-		
+		//hapus nokartu
+		function delnokar($nokartu)
+		{
+			$this->Msiswa->KOSNOKAR($nokartu);
+		}
 
-		
+
+
 }
 
 

@@ -305,7 +305,7 @@ $GetSiswa = $siswa->GetData_All();
       $(document).ready(function() {
       setInterval(function() {
         $("#cekkartu").load('bacakartu.php')
-      }, 1000);
+      }, 2000);
           });
     
     

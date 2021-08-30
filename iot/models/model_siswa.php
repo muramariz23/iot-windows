@@ -40,7 +40,6 @@ class Model_siswa{
 		}
 
 
-
 		//method mengambil semua data dari tabel
 		function GET()
 		{
@@ -79,7 +78,6 @@ class Model_siswa{
 		}
 
 
-
 		//method memasukan data kedalam tabel
 		function PUT ($nisn,$nama,$id_kelas,$nokartu)
 		{
@@ -100,6 +98,14 @@ class Model_siswa{
 			//perintah DELETE data
 			mysqli_query($this->con,"delete from siswa where nisn='$nisn'");
 		}
+
+
+		//mengkosongkan tmprfid
+		function KOSNOKAR($nokartu)
+		{
+			mysqli_query($this->con,"delete from tmprfid where nokartu='$nokartu'");
+		}
+
 
 
 }
