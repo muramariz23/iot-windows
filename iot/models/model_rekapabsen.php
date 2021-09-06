@@ -35,8 +35,9 @@ class Model_rekapabsen{
 		{
 			
 			mysqli_query($this->con,"insert into absensi values(
-				'".$id_absen."'
+				'".$id_absen."',
 				'".$nokartu."',
+				'".$id_kelas."',
 				'".$tanggal."',
 				'".$jam_masuk."',
 				'".$jam_pulang."'
@@ -49,7 +50,7 @@ class Model_rekapabsen{
 		function GET()
 		{
 			//perintah Get data
-			$this->query=mysqli_query($this->con,"select absensi.*, siswa.nama from absensi join siswa on absensi.nokartu = siswa.nokartu");
+			$this->query=mysqli_query($this->con,"select absensi.*, siswa.nama, kelas.nama_kelas from absensi join siswa on absensi.nokartu = siswa.nokartu join kelas on absensi.id_kelas = kelas.id_kelas");
 			while ($this->data=mysqli_fetch_array($this->query)) {
 				$this->result[]=$this->data;
 			}
@@ -66,7 +67,7 @@ class Model_rekapabsen{
 		function GET_Where($id_absen)
 		{
 			//perintah get where data
-			$this->query=mysqli_query($this->con,"select absensi.*, siswa.nama from absensi join siswa on absensi.nokartu = siswa.nokartu where absensi.tanggal = $tanggal");
+			$this->query=mysqli_query($this->con,"select absensi.*, siswa.nama, kelas.nama_kelas from absensi join siswa on absensi.nokartu = siswa.nokartu join kelas on absensi.id_kelas = kelas.id_kelas where id_absen = $id_absen");
 			while($this->data=mysqli_fetch_array($this->query))
 			{
 				$this->result[]=$this->data;
@@ -77,12 +78,13 @@ class Model_rekapabsen{
 
 
 		//method memasukan data kedalam tabel
-		function PUT ($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_pulang)
+		function PUT ($id_absen,$nokartu,$id_kelas,$tanggal,$jam_masuk,$jam_pulang)
 		{
 			//perintah PUT data
 			mysqli_query($this->con,"update absen set
 				id_absen='".$id_absen."',
 				nokartu='".$nokartu."',
+				id_kelas='".$id_kelas."',
 				tanggal='".$tanggal."',
 				jam_masuk='".$jam_masuk."',
 				jam_pulang='".$jam_pulang."'

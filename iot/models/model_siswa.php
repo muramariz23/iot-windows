@@ -101,7 +101,7 @@ class Model_siswa{
 
 
 		//mengkosongkan tmprfid
-		function KOSNOKAR($nokartu)
+		function HAPUS($nokartu)
 		{
 			mysqli_query($this->con,"delete from tmprfid where nokartu='$nokartu'");
 		}

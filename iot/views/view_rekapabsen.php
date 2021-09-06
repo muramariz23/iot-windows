@@ -156,11 +156,6 @@ $GetAbsen = $absen->GetData_All();
                       </tr>
                     </thead>
                     <tbody>
-                      <?php 
-
-                      //membaca tanggal
-                     
-                       ?>
                        <?php 
 
         //decision validasi variabel
@@ -177,10 +172,10 @@ $GetAbsen = $absen->GetData_All();
                           <?php echo $no++; ?>
                         </td>
                         <td>
-                          <?php echo $Get['id_absen']; ?>
+                          <?php echo $Get['nama']; ?>
                         </td>
                         <td>
-                          <?php echo $Get['nokartu']; ?>
+                          <?php echo $Get['nama_kelas']; ?>
                         </td>
                         <td>
                           <?php echo $Get['tanggal']; ?>

@@ -3,7 +3,7 @@
 <head>
 	<title></title>
   <!--style sendiri-->
-  <link rel="stylesheet" type="text/css" href="../assets/pulse.css">
+  <link rel="stylesheet" type="text/css" href="../assets/scan.css">
   <link rel="stylesheet" type="text/css" href="../assets/coba.css">
   <!--style template-->
 	  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -124,12 +124,11 @@ $GetSiswa = $siswa->GetData_All();
     
 
     <!--awalan isian-->
-    <div class="pulse">
+    <div class="scan">
 
     </div>
-     
-      <h3 class="coba" id="cekkartu"></h3>
-    
+            
+    <h3 id="cekkartu"></h3>
       
   
 	</div>
@@ -305,7 +304,7 @@ $GetSiswa = $siswa->GetData_All();
       $(document).ready(function() {
       setInterval(function() {
         $("#cekkartu").load('bacakartu.php')
-      }, 2000);
+      }, 1000);
           });
     
     

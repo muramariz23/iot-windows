@@ -14,6 +14,7 @@ class controller_rekapabsen{
 
 	var $id_absen;
 	var $nokartu;
+	var $id_kelas;
 	var $tanggal;
 	var $jam_masuk;
 	var $jam_pulang;
@@ -30,10 +31,10 @@ class controller_rekapabsen{
 
 
 		//method memasukan data ke dalam tabel
-		function POSTData ($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_keluar)
+		function POSTData ($id_absen,$nokartu,$id_kelas,$tanggal,$jam_masuk,$jam_keluar)
 		{
 			//perintah POST data
-			$this->Mabsen->POST($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_keluar);
+			$this->Mabsen->POST($id_absen,$nokartu,$id_kelas,$tanggal,$jam_masuk,$jam_keluar);
 		}
 
 
@@ -56,10 +57,10 @@ class controller_rekapabsen{
 
 
 		//method memasukan data ke dalam tabel
-		function PUTData($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_keluar)
+		function PUTData($id_absen,$nokartu,$id_kelas,$tanggal,$jam_masuk,$jam_keluar)
 		{
 			//perintah PUT data
-			$this->Mabsen->PUT($id_absen,$nokartu,$tanggal,$jam_masuk,$jam_keluar);
+			$this->Mabsen->PUT($id_absen,$nokartu,$id_kelas,$tanggal,$jam_masuk,$jam_keluar);
 		}
 
 

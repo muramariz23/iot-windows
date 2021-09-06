@@ -3,6 +3,7 @@
 include '../config/csrf.php';
 include '../controllers/controller_siswa.php';
 include '../controllers/controller_rekapabsen.php';
+
 //membuat objek dari class
 
 
@@ -25,11 +26,9 @@ if ($function == "create_siswa") {
 			$_POST['nokartu']
 		);
 	// }
-		
-		}
-
-
-	header("location:../views/view_siswa.php");
+		$db_siswa->HAPUSKartu($_POST['nokartu']);
+	
+		header("location:../views/view_siswa.php");
 	}
 
 	//decision variabel PUT_siswa
@@ -104,10 +103,10 @@ if ($function == "create_siswa") {
 
 	//spp
 	if ($function == "create_rekapabsen") {
-	$db_spp = new controller_rekapabsen();
+	$db_absen = new controller_rekapabsen();
 	//validasi token csrf
 	// if (validation() == true) {
-		$db_spp->POSTData(
+		$db_absen->POSTData(
 			$_POST['id_absen'],
 			$_POST['nisn'],
 			$_POST['id_kelas'],
@@ -122,7 +121,7 @@ if ($function == "create_siswa") {
 	//decision variabel PUT_spp
 	elseif ($function == "put_rekapabsen") {
 		
-		$db_spp = new controller_rekapabsen();
+		$db_absen = new controller_rekapabsen();
 		//validasi token csrf
 		// if (validation() == true) {
 			$db_spp->PUTData(
@@ -139,9 +138,9 @@ if ($function == "create_siswa") {
 
 	//decision variabel delete_spp
 	elseif ($function == "delete_rekapabsen") {
-		$db_spp = new controller_rekapabsen();
+		$db_absen = new controller_rekapabsen();
 		
-		$db_spp->DELETEData($_GET['id_absen']);
+		$db_absen->DELETEData($_GET['id_absen']);
 		header("location:../views/view_rekapabsen.php");
 	}else{echo "error";}
 	

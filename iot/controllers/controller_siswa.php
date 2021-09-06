@@ -79,9 +79,9 @@ class controller_siswa{
 
 
 		//hapus nokartu
-		function delnokar($nokartu)
+		function HAPUSKartu($nokartu)
 		{
-			$this->Msiswa->KOSNOKAR($nokartu);
+			$this->Msiswa->HAPUS($nokartu);
 		}
 
 
