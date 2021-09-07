@@ -37,30 +37,32 @@
 	<?php if (empty($nokartu)) { ?>
 	
 
-	<h3 style="text-align: left;">ABSEN : <?php echo $mode_absen; ?></h3>
+	<h3>ABSEN : <?php echo $mode_absen; ?></h3>
 	<h3>SILAHKAN TEMPEL KARTU</h3>
 
 <?php } else {
 
 	$cari_siswa = mysqli_query($con,"select siswa.*, kelas.nama_kelas from siswa join kelas on siswa.id_kelas = kelas.id_kelas where nokartu = '$nokartu'");
-
+	$cari_kelas = mysqli_query($con,"select * from kelas");
 	$jumlah_data = mysqli_num_rows($cari_siswa);
 
 	if ($jumlah_data==0) {
 		echo "<h1>Kartu Tidak terdaftar</h1>";
 	}else{
 		$Getkartusiswa = mysqli_fetch_array($cari_siswa);
+		$Getnamakelas = mysqli_fetch_array($cari_kelas);
 		$nama_siswa = $Getkartusiswa['nama'];
-		$nama_kelas = $Getkartusiswa['nama_kelas'];
+		$nama_kelas = $Getnamakelas['id_kelas'];
 
 		date_default_timezone_set('Asia/Jakarta');
             $tanggal = date('Y-m-d');
-            $jam = date('H-i-s');
+            $jam = date('H:i:s');
 
             //cari absen
             $cari_absen = mysqli_query($con,"select * from absensi where nokartu = '$nokartu' and tanggal = '$tanggal'");
             //hitung jumlah absen
             $jumlah_absen =  mysqli_num_rows($cari_absen);
+
             if ($jumlah_absen == 0) {
             	echo "<h1>SELAMAT DATANG<br>$nama_siswa</h1>" ;
             	mysqli_query($con,"insert into `absensi` (`id_absen`, `nokartu`, `id_kelas`, `tanggal`, `jam_masuk`) values (NULL, '$nokartu', '$nama_kelas', '$tanggal', '$jam');");

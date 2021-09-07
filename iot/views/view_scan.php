@@ -125,10 +125,13 @@ $GetSiswa = $siswa->GetData_All();
 
     <!--awalan isian-->
     <div class="scan">
-
+    
     </div>
             
+    <div class="coba">
     <h3 id="cekkartu"></h3>
+    </div>
+    
       
   
 	</div>
