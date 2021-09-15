@@ -1,8 +1,10 @@
 <?php 
-	include "koneksi.php";
+	include "../config/database.php";
 
+	$this->db = new database();
+	$this->con = $this->db->connect();
 	//baca mode absensi terakhir
-	$mode = mysqli_query($konek, "select * from status");
+	$mode = mysqli_query($this->con, "select * from status");
 	$data_mode = mysqli_fetch_array($mode);
 	$mode_absen = $data_mode['mode'];
 
@@ -12,7 +14,7 @@
 		$mode_absen = 1 ;
 
 	//simpan mode absen di tabel status dengan cara update
-	$simpan = mysqli_query($konek, "update status set mode='$mode_absen'");
+	$simpan = mysqli_query($this->con, "update status set mode='$mode_absen'");
 	if($simpan)
 		echo "Berhasil";
 	else
